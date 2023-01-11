@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Employee</title>
+</head>
+<body>
+<a th:href="@{/create}">Create Employee</a>
+<h1>Employees</h1>
+
+<br/>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>AGE</th>
+        <th>SALARY</th>
+        <th>BRANCH</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="employee : ${employees}">
+        <tr>
+            <td th:text="${employee.id}"></td>
+            <td><a th:href="@{/view/__${employee.id}__ }" th:text="${employee.name}"></a></td>
+            <td th:text="${employee.age}"></td>
+            <td th:text="${employee.salary}"></td>
+            <td th:text="${employee.branch}"></td>
+            <td><a th:href="@{/edit/__${employee.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete/__${employee.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
